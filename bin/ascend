@@ -1,0 +1,10 @@
+'''
+Created on Aug 19, 2016
+
+@author: Johnson
+'''
+
+if __name__ == '__main__':
+    import ascend
+    import sys
+    ascend.main(sys.argv)
