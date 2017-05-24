@@ -85,13 +85,13 @@ def main(args):
                                 else:
                                     completing.extend([p for p in research.get_project_req(completing[i]) if p not in completing and not research.is_completed(p)])
                                     i += 1
-                            completing.reverse()
-                            for p in completing:
-                                print "Completed " + p + "."
-                                research.complete(p)
-                            research.clear_working_path()
-                            for p in research.working_projects:
-                                research.add_project(p)
+                        completing.reverse()
+                        for p in completing:
+                            print "Completed " + p + "."
+                            research.complete(p)
+                        research.clear_working_path()
+                        for p in research.working_projects:
+                            research.add_project(p)
                 except NoSuchResearchProjectException,e:
                     print "There is no such project as %s" % (repr(e[0]),)
                 except AmbiguousResearchProjectException,e:
@@ -102,8 +102,12 @@ def main(args):
         proj = ""
         while len(proj) == 0:
             print "> ",
-            proj = sys.stdin.readline().strip()
+            proj = sys.stdin.readline()
             sys.stdout.write("")
+            if proj == '':
+                print ""
+                break
+            proj = proj.strip()
         if proj.lower() == 'quit' or proj.lower() == 'exit':
             proj = ''
     
